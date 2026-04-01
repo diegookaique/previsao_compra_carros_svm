@@ -1,66 +1,61 @@
-### **Previsão de Propensão a Compra de Carros: Uma Análise Comparativa entre SVM e XGBoost**
+# 🚀 Previsão de Propensão à Compra de Carros
 
-Este projeto visa construir e avaliar modelos de Machine Learning para prever a propensão de clientes a comprar um carro, utilizando características demográficas como idade e salário anual. Realizamos uma análise comparativa entre modelos Support Vector Machine (SVM) com diferentes kernels e um modelo XGBoost para identificar a abordagem mais eficaz.
+Este projeto aplica técnicas de Machine Learning para prever a probabilidade de um cliente comprar um carro, utilizando variáveis demográficas como idade e salário.
 
-### **Conteúdo**
+Foram desenvolvidos e comparados modelos de classificação, incluindo Support Vector Machines e XGBoost, com foco em identificar a abordagem mais eficaz e gerar insights acionáveis para o negócio.
 
-*   **`CARRO_CLIENTES.csv`**: Conjunto de dados utilizado para treinamento e teste.
-*   `previsao_compra_carros_svm.ipynb`: Notebook Jupyter contendo todo o processo de análise.
+## 🎯 Problema de Negócio
 
-### **Metodologia**
+Empresas do setor automotivo precisam otimizar seus esforços de marketing e vendas, priorizando clientes com maior probabilidade de conversão.
 
-1.  **Carregamento e Pré-processamento de Dados:**
-    *   Carregamento do dataset `CARRO_CLIENTES.csv`.
-    *   Renomeação de colunas para maior clareza (`User ID` para `id`, `Gender` para `genero`, `Age` para `idade`, `AnnualSalary` para `salario`, `Purchased` para `comprou`).
-    *   Verificação de tipos de dados, valores ausentes e duplicatas.
-    *   Remoção da coluna `id`, que não é relevante para o modelo preditivo.
-    *   Aplicação de **Label Encoding** na coluna categórica `genero` (Male/Female para 1/0).
+Este projeto busca responder:
 
-2.  **Análise Exploratória de Dados (EDA):**
-    *   Geração de box plots para identificar outliers nas colunas numéricas (nenhum outlier significativo encontrado).
-    *   Cálculo e visualização da matriz de correlação entre as variáveis numéricas. Identificação de forte correlação positiva entre `idade` e `comprou` (0.62), e correlação moderada entre `salario` e `comprou` (0.36).
-    *   Visualizações gráficas (box plots e histogramas) para aprofundar a relação entre `idade`/`salario` e a variável alvo `comprou`, confirmando a idade como um preditor mais forte.
+*   Quais clientes têm maior propensão a comprar um carro?
 
-3.  **Preparação para Modelagem:**
-    *   Separação das features (X) e do target (Y).
-    *   Divisão do dataset em conjuntos de treino (80%) e teste (20%) usando `train_test_split`.
+## ⚙️ Abordagem
 
-4.  **Treinamento e Avaliação de Modelos SVM:**
-    *   **SVM com Kernel Linear:** Treinado e avaliado. Acurácia de 83.75%, com um bom balanço entre precisão e recall para ambas as classes.
-    *   **SVM com Kernel Polinomial:** Treinado e avaliado. Acurácia de 75.25%, mas com um recall muito baixo (0.44) para a classe 'comprou', indicando dificuldade em identificar compradores.
+*   Pré-processamento de dados (tratamento de variáveis e encoding)
+*   Análise exploratória (EDA) para identificação de padrões
+*   Treinamento de modelos:
+    *   SVM (kernel linear e polinomial)
+    *   XGBoost
+*   Avaliação com métricas de classificação (accuracy, precision, recall)
 
-5.  **Comparação com XGBoost:**
-    *   Resultados de um modelo XGBoost pré-existente foram incorporados para comparação:
-        *   **Acurácia:** 90.5%
-        *   **Classe 0 (Não Comprou):** Precisão = 0.89, Recall = 0.95
-        *   **Classe 1 (Comprou):** Precisão = 0.93, Recall = 0.85
+## 📊 Resultados
 
-### **Resultados e Conclusão**
+| Modelo            | Acurácia |
+| :---------------- | :------- |
+| SVM (Linear)      | 83.75%   |
+| SVM (Polinomial)  | 75.25%   |
+| XGBoost           | 90.5%    |
 
-O **XGBoost demonstrou ser o modelo mais robusto e eficaz** para este problema de previsão, alcançando a maior acurácia (90.5%) e apresentando métricas de precisão e recall mais elevadas e balanceadas para ambas as classes em comparação com os modelos SVM.
+👉 O modelo XGBoost apresentou o melhor desempenho geral, com maior equilíbrio entre precisão e recall.
 
-*   O SVM com kernel linear apresentou um desempenho razoável, sendo superior ao SVM com kernel polinomial neste contexto.
-*   A arquitetura ensemble do XGBoost (gradient boosting) provou ser mais eficiente em capturar as complexidades e padrões nos dados de propensão a compra.
+## 🧠 Insights de Negócio
 
-Este projeto destaca a importância de comparar diferentes algoritmos de Machine Learning para encontrar a melhor solução para um problema específico, com o XGBoost se mostrando o vencedor claro para prever a compra de carros com base nos dados fornecidos.
+*   Idade é o principal fator preditivo de compra
+*   Clientes em faixas etárias específicas apresentam maior propensão
+*   Possível otimização de campanhas com:
+    *   segmentação mais eficiente
+    *   redução de custo de aquisição
+    *   foco em leads qualificados
 
-### **Tecnologias Utilizadas**
+## 🛠️ Tecnologias
 
 *   Python
-*   `pandas` (manipulação de dados)
-*   `scikit-learn` (LabelEncoder, SVC, train_test_split, classification_report, accuracy_score)
-*   `matplotlib` e `seaborn` (visualização de dados)
+*   Pandas
+*   Scikit-learn
+*   Matplotlib / Seaborn
 
----
+## 📌 Próximos Passos (DIFERENCIAL 🔥)
 
-## Contribuição
+*   Implementar validação cruzada
+*   Realizar tuning de hiperparâmetros
+*   Adicionar novas variáveis ao modelo
+*   Testar pipelines de produção
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+## 👨‍💻 Autor
 
----
-
-📎 **Projeto desenvolvido por:** Diego Kaique
-
-🔗 **LinkedIn:** [https://www.linkedin.com/in/diego-kaique-9ba3697b]
-
-📧 **Contato:** [kaique_0208@hotmail.com]
+Diego Kaique
+[LinkedIn](https://www.linkedin.com/in/diego-kaique-9ba3697b)
+```
